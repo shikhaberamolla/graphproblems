@@ -1,43 +1,60 @@
-void dij(int n,int v,int cost[10][10],int dist[])
+#include<stdio.h>
+#include<stdlib.h>
+void dijk(int[10][10],int s)
 {
- int i,u,count,w,flag[10],min;
- for(i=1;i<=n;i++)
-  flag[i]=0,dist[i]=cost[v][i];
- count=2;
- while(count<=n)
- {
-  min=99;
-  for(w=1;w<=n;w++)
-   if(dist[w]<min && !flag[w])
-    min=dist[w],u=w;
-  flag[u]=1;
-  count++;
-  for(w=1;w<=n;w++)
-   if((dist[u]+cost[u][w]<dist[w]) && !flag[w])
-    dist[w]=dist[u]+cost[u][w];
- }
+    int distance[10],u,v,minval,flag[10],count1=0,i,j,minpos;
+    for(i=0;i<10;i++)
+     {
+         distance[i]=infinity;
+         flag[i]=0;
+     }
+    distance[s]=0;
+    flag[s]=1;
+    u=s;
+    while(count1<=9)
+    {
+         minval=99;
+        for(j=0;j<10;j++)
+        {
+            if(distance[j]<minval && !flag[j])
+               minval=distance[j],minpos=j;
+        }
+    for(i=0;i<10;i++)
+    {
+        if(weight[u][i]!=0 && !flag[i])
+            {
+                if(distance[u]+weight[u][i]<distance[i])
+                    distance[i]=distance[u]+weight[u][i];
+                if(distance[i]<minval)
+                  {
+                   minval=distance[i];
+                   minpos=i;
+                  }
+            }
+    }
+    flag[minpos]=1;
+    count1++;
+    u=minpos;
+   }
+   printf("the shortest distances from source %d to: \n",s);
+   for(i=0;i<10;i++)
+   {
+       if(i!=s)
+        printf("%d= %d\n",i,distance[i]);
+   }
 }
 
-void main()
+int main()
 {
- int n,v,i,j,cost[10][10],dist[10];
- clrscr();
- printf("\n Enter the number of nodes:");
- scanf("%d",&n);
- printf("\n Enter the cost matrix:\n");
- for(i=1;i<=n;i++)
-  for(j=1;j<=n;j++)
-  {
-   scanf("%d",&cost[i][j]);
-   if(cost[i][j]==0)
-    cost[i][j]=infinity;
-  }
- printf("\n Enter the source matrix:");
- scanf("%d",&v);
- dij(n,v,cost,dist);
- printf("\n Shortest path:\n");
- for(i=1;i<=n;i++)
-  if(i!=v)
-   printf("%d->%d,cost=%d\n",v,i,dist[i]);
- getch();
+  int weight[10][10],i,j,source;
+  printf("enter the weights\n");
+  for(i=0;i<10;i++)
+   {
+       for(j=0;j<10;j++)
+           scanf("%d",&weight[i][j]);
+   }
+  printf("enter source");
+  scanf("%d",&source);
+  dijk(weight,source);
+  return 0;
 }
