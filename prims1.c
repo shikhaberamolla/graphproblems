@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<conio.h>
+/* finding the minimum spanning tree    */
 int a,b,u,v,n,i,j,ne=1;
 int visited[10]={0},minv,mincost=0,cost[10][10];
 int main()
