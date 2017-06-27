@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<conio.h>
 #define infinity 99
+/*function that finds shortest path from source to all the node
+    input is the weight matrix and source node*/
 void dijk(int[5][5],int s)
 {
     int distance[5],u,v,minval,flag[5],count1=0,i,j,minpos;
@@ -44,17 +46,18 @@ void dijk(int[5][5],int s)
         printf("%d= %d\n",i,distance[i]);
    }
 }
+/*  main function    */
 int main()
 {
   int weight[5][5],i,j,source;
   printf("enter the weights\n");
-  for(i=0;i<5;i++)
+  for(i=0;i<5;i++)      //entering the weight matrix
    {
        for(j=0;j<5;j++)
            scanf("%d",&weight[i][j]);
    }
   printf("enter source");
   scanf("%d",&source);
-  dijk(weight,source);
+  dijk(weight,source);      //function call
   return 0;
 }
