@@ -1,4 +1,5 @@
 #include<stdio.h>
+/*  structure that defines an edge  */
 struct edge{ int src,dst,weight;
                };
 int belong[20];
@@ -15,6 +16,7 @@ void unionv(int a,int b,int n)
             belong[i]=a;
     }
 }
+/*  function to sort the edges in order to selct the one with minimum weight    */
 void sortedges(struct edge graph[],int n)
 {
     int i,j;
@@ -32,6 +34,8 @@ void sortedges(struct edge graph[],int n)
        }
    }
 }
+/*  function to find edge with minimum weight
+        input is an array of edges          */
 void kruskals(struct edge graph[],int n)
 {
     int minweight=0,i,v1,v2;
@@ -49,6 +53,7 @@ void kruskals(struct edge graph[],int n)
     }
     printf("\n the minimum weight is %d\n",minweight);
 }
+/*  main function   */
 int main()
 {
     struct edge graph[20];
