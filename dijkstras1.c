@@ -1,9 +1,10 @@
 #include<stdio.h>
-#include<stdlib.h>
-void dijk(int[10][10],int s)
+#include<conio.h>
+#define infinity 99
+void dijk(int[5][5],int s)
 {
-    int distance[10],u,v,minval,flag[10],count1=0,i,j,minpos;
-    for(i=0;i<10;i++)
+    int distance[5],u,v,minval,flag[5],count1=0,i,j,minpos;
+    for(i=0;i<5;i++)
      {
          distance[i]=infinity;
          flag[i]=0;
@@ -11,15 +12,15 @@ void dijk(int[10][10],int s)
     distance[s]=0;
     flag[s]=1;
     u=s;
-    while(count1<=9)
+    while(count1<=4)
     {
          minval=99;
-        for(j=0;j<10;j++)
+        for(j=0;j<5;j++)
         {
             if(distance[j]<minval && !flag[j])
                minval=distance[j],minpos=j;
         }
-    for(i=0;i<10;i++)
+    for(i=0;i<5;i++)
     {
         if(weight[u][i]!=0 && !flag[i])
             {
@@ -37,20 +38,19 @@ void dijk(int[10][10],int s)
     u=minpos;
    }
    printf("the shortest distances from source %d to: \n",s);
-   for(i=0;i<10;i++)
+   for(i=0;i<5;i++)
    {
        if(i!=s)
         printf("%d= %d\n",i,distance[i]);
    }
 }
-
 int main()
 {
-  int weight[10][10],i,j,source;
+  int weight[5][5],i,j,source;
   printf("enter the weights\n");
-  for(i=0;i<10;i++)
+  for(i=0;i<5;i++)
    {
-       for(j=0;j<10;j++)
+       for(j=0;j<5;j++)
            scanf("%d",&weight[i][j]);
    }
   printf("enter source");
