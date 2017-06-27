@@ -7,6 +7,7 @@ int findset(int n)
 {
     return(belong[n]);
 }
+/*  union set   */
 void unionv(int a,int b,int n)
 {
     int i;
